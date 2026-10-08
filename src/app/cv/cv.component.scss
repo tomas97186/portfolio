@@ -16,7 +16,7 @@
   width: 210mm;
   min-height: 297mm;
   margin: 0 auto;
-  padding: 13mm 14mm;
+  padding: 13mm 14mm 6mm;
   background: #fff;
   box-shadow: 0 10px 40px rgba(0, 0, 0, .12);
   font-size: 8.9pt;
@@ -198,6 +198,6 @@ h3 { font-size: 11pt; margin: 0; }
 
 @media print {
   :host { padding: 0; background: none; min-height: 0; }
-  .sheet { width: auto; min-height: 273mm; padding: 0 14mm; box-shadow: none; }
+  .sheet { width: auto; min-height: 296mm; padding: 11mm 14mm 6mm; box-shadow: none; }
   .print { display: none; }
 }
