@@ -1,0 +1,7 @@
+node_modules
+dist
+.angular
+
+# dati personali e PDF generato del CV
+cv.private.json
+*-CV.pdf

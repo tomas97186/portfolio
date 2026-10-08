@@ -1,0 +1,104 @@
+<button class="print" (click)="print()">print / save pdf</button>
+
+<article class="sheet">
+  <header>
+    <p class="label">// curriculum vitae</p>
+    <h1>{{ p.name }}<span class="dot">.</span></h1>
+    <p class="role">{{ p.role }}</p>
+
+    <ul class="contacts">
+      <li><a [href]="'mailto:' + p.email">{{ p.email }}</a></li>
+      @if (priv.phone) {
+        <li>{{ priv.phone }}</li>
+      }
+      <li>{{ p.location }}</li>
+      @if (priv.website) {
+        <li><a [href]="priv.website">{{ short(priv.website) }}</a></li>
+      }
+      @for (l of links; track l.label) {
+        <li><a [href]="l.url">{{ short(l.url) }}</a></li>
+      }
+    </ul>
+  </header>
+
+  <div class="grid">
+    <main>
+      <section>
+        <h2><span>01</span> profile</h2>
+        <p class="intro">{{ p.intro }}</p>
+      </section>
+
+      <section>
+        <h2><span>02</span> experience</h2>
+        @for (job of jobs; track job.role) {
+          <div class="job">
+            <div class="job-head">
+              <h3>{{ job.role }}</h3>
+              <span class="period">{{ job.from }} — {{ job.to }}</span>
+            </div>
+            <p class="company">{{ job.company }} · {{ job.place }}</p>
+            <p class="text">{{ job.text }}</p>
+            <p class="tags">
+              @for (t of job.tags; track t) {
+                <span>{{ t }}</span>
+              }
+            </p>
+          </div>
+        }
+      </section>
+    </main>
+
+    <aside>
+      <section>
+        <h2><span>03</span> skills</h2>
+        @for (g of skills; track g.group) {
+          <div class="group">
+            <h4>{{ g.group }}</h4>
+            <p>{{ g.items.join(' · ') }}</p>
+          </div>
+        }
+      </section>
+
+      <section>
+        <h2><span>04</span> certifications</h2>
+        <ul class="list">
+          @for (c of certs; track c.name) {
+            <li>
+              <strong>{{ c.name }}</strong>
+              <small>{{ c.issuer }} · {{ c.date }}</small>
+            </li>
+          }
+        </ul>
+      </section>
+
+      <section>
+        <h2><span>05</span> education</h2>
+        <ul class="list">
+          @for (e of education; track e.title) {
+            <li>
+              <strong>{{ e.title }}</strong>
+              <small>{{ e.school }} · {{ e.years }}</small>
+              <small>{{ e.note }}</small>
+            </li>
+          }
+        </ul>
+      </section>
+
+      <section>
+        <h2><span>06</span> languages</h2>
+        <ul class="list">
+          @for (l of languages; track l.name) {
+            <li>
+              <strong>{{ l.name }}</strong>
+              <small>{{ l.level }}</small>
+            </li>
+          }
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  @if (note) {
+    <p class="note">{{ note }}</p>
+  }
+</article>

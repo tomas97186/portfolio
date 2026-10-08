@@ -86,3 +86,8 @@ h2 {
   section { padding: 64px 0; }
   .wrap { padding: 0 16px; }
 }
+
+@media print {
+  @page { size: A4; margin: 11mm 0; }
+  body { background: #fff; }
+}
