@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CERTS, CV_NOTE, EDUCATION, JOBS, LANGUAGES, PROFILE, SKILLS } from '../data/profile';
+import { NgStyle } from '@angular/common';
 
 // Dati che non devono finire sul sito pubblico (telefono, ecc.).
 // Li inietta scripts/cv-pdf.mjs leggendo cv.private.json, che non è versionato.
@@ -13,6 +14,7 @@ interface PrivateInfo {
   standalone: true,
   templateUrl: './cv.component.html',
   styleUrl: './cv.component.scss',
+  imports: [NgStyle],
 })
 export class CvComponent {
   p = PROFILE;
@@ -28,6 +30,7 @@ export class CvComponent {
   links = [
     { label: 'linkedin', url: this.p.linkedin },
     { label: 'github', url: this.p.github },
+    { label: 'credly', url: this.p.credly },
   ].filter(l => !!l.url);
 
   // "https://www.github.com/foo/" -> "github.com/foo"

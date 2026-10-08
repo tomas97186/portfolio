@@ -23,8 +23,8 @@ export const PROFILE = {
   github: "https://github.com/tomas97186",
   credly: "https://www.credly.com/users/tommaso-cirillo",
   intro:
-    "I build web applications end to end, from the database schema to the last pixel of the UI. " +
-    "Nearly five years across Java/Angular, Salesforce and AWS, now leading a full stack team.",
+    "I build web applications end to end, from the database schema to the last pixel of the UI, and I design and develop microservice architectures, from service boundaries to deployment." + 
+    "Nearly five years across Java/Angular, Salesforce and AWS, now leading a full stack team."
 };
 
 export const ABOUT = [
@@ -62,7 +62,7 @@ export const JOBS: Job[] = [
     company: "IBM Client Innovation Center",
     place: "Naples",
     text:
-      "Owned the re-engineering of a legacy monolith into a modern web application. " +
+      "Owned the re-engineering of a legacy monolith into a modern microservices web application. " +
       "Took part in requirements gathering and architecture design, chose the stack from database to frontend, " +
       "designed the whole UI/UX in Figma and built the services with Spring and the client with Angular, deployed on OpenShift.",
     tags: [
@@ -104,9 +104,9 @@ export const SKILLS: { group: string; items: string[] }[] = [
     group: "Frontend",
     items: ["Angular", "JavaScript", "HTML / CSS", "Figma"],
   },
-  { group: "Backend", items: ["Java", "Spring", "Python", "SQL", "C"] },
-  { group: "Cloud & CRM", items: ["Salesforce (Apex)", "AWS", "OpenShift"] },
-  { group: "Way of working", items: ["Agile", "Git", "Mentoring", "Client"] },
+  { group: "Backend", items: ["Java", "Spring", "Python", "C", "SQL"] },
+  { group: "Cloud", items: ["OpenShift", "AWS"] },
+  { group: "Practices", items: ["Agile", "Git", "Code review","Architecture design", "Requirements analysis"] },
 ];
 
 export const CERTS: Cert[] = [
@@ -151,7 +151,7 @@ export const EDUCATION = [
 
 export const LANGUAGES = [
   { name: "Italian", level: "Native" },
-  { name: "English", level: "C1 spoken · B2 written" },
+  { name: "English", level: "C1" },
 ];
 
 // Riga in fondo al CV (solo /cv, non compare sul sito). Stringa vuota per toglierla.

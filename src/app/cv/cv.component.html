@@ -6,16 +6,22 @@
     <p class="role">{{ p.role }}</p>
 
     <ul class="contacts">
-      <li><a [href]="'mailto:' + p.email">{{ p.email }}</a></li>
+      <li style="width: 100%">{{ p.location }}</li>
+      <li [style.width]="priv.phone ?  null : '100%'">
+        <a [href]="'mailto:' + p.email">{{ p.email }}</a>
+      </li>
       @if (priv.phone) {
-        <li>{{ priv.phone }}</li>
+        <li style="width: 100%">{{ priv.phone }}</li>
       }
-      <li>{{ p.location }}</li>
       @if (priv.website) {
-        <li><a [href]="priv.website">{{ short(priv.website) }}</a></li>
+        <li>
+          <a [href]="priv.website">{{ short(priv.website) }}</a>
+        </li>
       }
       @for (l of links; track l.label) {
-        <li><a [href]="l.url">{{ short(l.url) }}</a></li>
+        <li>
+          <a [href]="l.url" target="_blank" rel="noopener noreferrer">{{ short(l.url) }}</a>
+        </li>
       }
     </ul>
   </header>
@@ -53,7 +59,7 @@
         @for (g of skills; track g.group) {
           <div class="group">
             <h4>{{ g.group }}</h4>
-            <p>{{ g.items.join(' · ') }}</p>
+            <p>{{ g.items.join(" · ") }}</p>
           </div>
         }
       </section>

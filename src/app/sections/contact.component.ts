@@ -22,6 +22,9 @@ import { PROFILE } from '../data/profile';
           @if (p.github) {
             <li><a [href]="p.github" target="_blank" rel="noopener">GitHub ↗</a></li>
           }
+          @if (p.credly) {
+            <li><a [href]="p.credly" target="_blank" rel="noopener">Credly ↗</a></li>
+          }
         </ul>
       </div>
     </section>
