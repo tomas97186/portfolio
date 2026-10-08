@@ -1,0 +1,198 @@
+// Il CV ha sempre i colori chiari, anche se il sito è in dark mode
+:host {
+  --ink: #16161a;
+  --muted: #5f5c55;
+  --line: #e2ddd2;
+  --accent: #e8532a;
+
+  display: block;
+  min-height: 100vh;
+  padding: 40px 16px;
+  background: #e9e5dc;
+  color: var(--ink);
+}
+
+.sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 13mm 14mm;
+  background: #fff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .12);
+  font-size: 8.9pt;
+  line-height: 1.38;
+}
+
+a { color: inherit; text-decoration: none; }
+
+// ---------- header
+
+header { padding-bottom: 5mm; margin-bottom: 5.5mm; border-bottom: 1px solid var(--line); }
+
+.label {
+  font-family: var(--mono);
+  font-size: 8.5pt;
+  color: var(--accent);
+  margin: 0 0 2mm;
+}
+
+h1 {
+  font-size: 28pt;
+  line-height: 1;
+  letter-spacing: -.03em;
+  margin: 0;
+}
+
+.dot { color: var(--accent); }
+
+.role {
+  font-family: var(--mono);
+  font-size: 10pt;
+  color: var(--muted);
+  margin: 2mm 0 3mm;
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1mm 5mm;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 8.3pt;
+
+  li::before { content: '/'; color: var(--accent); margin-right: 1.5mm; }
+}
+
+// ---------- layout
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 62mm;
+  gap: 9mm;
+}
+
+// annulla gli stili globali delle sezioni del sito
+section { padding: 0; border: 0; }
+section + section { margin-top: 4.5mm; }
+
+h2 {
+  font-family: var(--mono);
+  font-size: 9pt;
+  font-weight: 500;
+  text-transform: lowercase;
+  margin: 0 0 3mm;
+  padding-bottom: 1.5mm;
+  border-bottom: 1px solid var(--line);
+  break-after: avoid;
+
+  span { color: var(--accent); margin-right: 1.5mm; }
+}
+
+.intro { margin: 0; font-size: 9.8pt; }
+
+// ---------- esperienze
+
+.job {
+  break-inside: avoid;
+  & + .job { margin-top: 3mm; }
+}
+
+.job-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4mm;
+}
+
+h3 { font-size: 11pt; margin: 0; }
+
+.period, .company {
+  font-family: var(--mono);
+  font-size: 8pt;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.company { margin: 0 0 1mm; }
+.text { margin: 0 0 1.2mm; }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2mm;
+  margin: 0;
+
+  span {
+    font-family: var(--mono);
+    font-size: 7pt;
+    color: var(--muted);
+    padding: .3mm 2mm;
+    border: 1px solid var(--line);
+    border-radius: 99px;
+  }
+}
+
+// ---------- colonna laterale
+
+.group {
+  break-inside: avoid;
+  & + .group { margin-top: 2.5mm; }
+
+  h4 {
+    font-family: var(--mono);
+    font-size: 7.8pt;
+    font-weight: 400;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  p { margin: .5mm 0 0; font-weight: 500; }
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li { break-inside: avoid; }
+  li + li { margin-top: 2mm; }
+  strong { display: block; font-weight: 500; line-height: 1.35; }
+  small { display: block; font-size: 8pt; color: var(--muted); }
+}
+
+.note {
+  margin: 3mm 0 0;
+  font-size: 7pt;
+  color: var(--muted);
+}
+
+// ---------- schermo vs stampa
+
+.print {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 840px) {
+  :host { padding: 0; }
+  .sheet { width: auto; min-height: 0; padding: 24px 16px; box-shadow: none; }
+  .grid { grid-template-columns: 1fr; }
+  .print { display: none; }
+}
+
+@media print {
+  :host { padding: 0; background: none; min-height: 0; }
+  .sheet { width: auto; min-height: 0; padding: 0 14mm; box-shadow: none; }
+  .print { display: none; }
+}

@@ -50,7 +50,7 @@ export const JOBS: Job[] = [
       "Architecture",
       "Spring",
       "Angular",
-      "Openshift",
+      "OpenShift",
       "Oracle SQL",
       "Figma",
     ],
@@ -70,7 +70,6 @@ export const JOBS: Job[] = [
       "Spring",
       "Angular",
       "OpenShift",
-      "Openshift",
       "Oracle SQL",
       "Figma",
     ],
@@ -154,3 +153,7 @@ export const LANGUAGES = [
   { name: "Italian", level: "Native" },
   { name: "English", level: "C1 spoken · B2 written" },
 ];
+
+// Riga in fondo al CV (solo /cv, non compare sul sito). Stringa vuota per toglierla.
+export const CV_NOTE =
+  'I authorize the processing of my personal data in accordance with the EU Regulation 2016/679 (GDPR) and Italian Legislative Decree 196/2003.';
