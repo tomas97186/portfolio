@@ -23,8 +23,8 @@ export const PROFILE = {
   github: "https://github.com/tomas97186",
   credly: "https://www.credly.com/users/tommaso-cirillo",
   intro:
-    "I build web applications end to end, from the database schema to the last pixel of the UI, and I design and develop microservice architectures, from service boundaries to deployment." + 
-    "Nearly five years across Java/Angular, Salesforce and AWS, now leading a full stack team."
+    "I build web applications end to end, from the database schema to the last pixel of the UI, and I design and develop microservice architectures, from service boundaries to deployment.\n\r" +
+    "Nearly five years across Java/Angular, Salesforce and AWS, now leading a full stack team.",
 };
 
 export const ABOUT = [
@@ -65,14 +65,7 @@ export const JOBS: Job[] = [
       "Owned the re-engineering of a legacy monolith into a modern microservices web application. " +
       "Took part in requirements gathering and architecture design, chose the stack from database to frontend, " +
       "designed the whole UI/UX in Figma and built the services with Spring and the client with Angular, deployed on OpenShift.",
-    tags: [
-      "Java",
-      "Spring",
-      "Angular",
-      "OpenShift",
-      "Oracle SQL",
-      "Figma",
-    ],
+    tags: ["Java", "Spring", "Angular", "OpenShift", "Oracle SQL", "Figma"],
   },
   {
     role: "Salesforce / AWS Developer",
@@ -96,7 +89,7 @@ export const JOBS: Job[] = [
       "Worked on a large data migration from a legacy relational database to Salesforce (extraction, mapping, transformation) " +
       "and on new Service Cloud features, including a loyalty program for customer engagement and rewards.",
     tags: ["Apex", "Service Cloud", "SQL", "Data migration"],
-  }
+  },
 ];
 
 export const SKILLS: { group: string; items: string[] }[] = [
@@ -106,7 +99,16 @@ export const SKILLS: { group: string; items: string[] }[] = [
   },
   { group: "Backend", items: ["Java", "Spring", "Python", "C", "SQL"] },
   { group: "Cloud", items: ["OpenShift", "AWS"] },
-  { group: "Practices", items: ["Agile", "Git", "Code review","Architecture design", "Requirements analysis"] },
+  {
+    group: "Practices",
+    items: [
+      "Agile",
+      "Git",
+      "Code review",
+      "Architecture design",
+      "Requirements analysis",
+    ],
+  },
 ];
 
 export const CERTS: Cert[] = [
@@ -156,4 +158,4 @@ export const LANGUAGES = [
 
 // Riga in fondo al CV (solo /cv, non compare sul sito). Stringa vuota per toglierla.
 export const CV_NOTE =
-  'I authorize the processing of my personal data in accordance with the EU Regulation 2016/679 (GDPR) and Italian Legislative Decree 196/2003.';
+  "I authorize the processing of my personal data in accordance with the EU Regulation 2016/679 (GDPR) and Italian Legislative Decree 196/2003.";

@@ -16,18 +16,28 @@
   width: 210mm;
   min-height: 297mm;
   margin: 0 auto;
-  padding: 13mm 14mm;
+  padding: 13mm 14mm 6mm;
   background: #fff;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, .12);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
   font-size: 8.9pt;
   line-height: 1.38;
+  // colonna flessibile: la nota GDPR va in fondo al foglio
+  display: flex;
+  flex-direction: column;
 }
 
-a { color: inherit; text-decoration: none; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
 // ---------- header
 
-header { padding-bottom: 5mm; margin-bottom: 5.5mm; border-bottom: 1px solid var(--line); }
+header {
+  padding-bottom: 5mm;
+  margin-bottom: 5.5mm;
+  border-bottom: 1px solid var(--line);
+}
 
 .label {
   font-family: var(--mono);
@@ -39,11 +49,13 @@ header { padding-bottom: 5mm; margin-bottom: 5.5mm; border-bottom: 1px solid var
 h1 {
   font-size: 28pt;
   line-height: 1;
-  letter-spacing: -.03em;
+  letter-spacing: -0.03em;
   margin: 0;
 }
 
-.dot { color: var(--accent); }
+.dot {
+  color: var(--accent);
+}
 
 .role {
   font-family: var(--mono);
@@ -62,7 +74,11 @@ h1 {
   font-family: var(--mono);
   font-size: 8.3pt;
 
-  li::before { content: '/'; color: var(--accent); margin-right: 1.5mm; }
+  li::before {
+    content: "/";
+    color: var(--accent);
+    margin-right: 1.5mm;
+  }
 }
 
 // ---------- layout
@@ -74,8 +90,13 @@ h1 {
 }
 
 // annulla gli stili globali delle sezioni del sito
-section { padding: 0; border: 0; }
-section + section { margin-top: 4.5mm; }
+section {
+  padding: 0;
+  border: 0;
+}
+section + section {
+  margin-top: 4.5mm;
+}
 
 h2 {
   font-family: var(--mono);
@@ -87,16 +108,24 @@ h2 {
   border-bottom: 1px solid var(--line);
   break-after: avoid;
 
-  span { color: var(--accent); margin-right: 1.5mm; }
+  span {
+    color: var(--accent);
+    margin-right: 1.5mm;
+  }
 }
 
-.intro { margin: 0; font-size: 9.8pt; }
+.intro {
+  margin: 0;
+  font-size: 9.8pt;
+}
 
 // ---------- esperienze
 
 .job {
   break-inside: avoid;
-  & + .job { margin-top: 3mm; }
+  & + .job {
+    margin-top: 3mm;
+  }
 }
 
 .job-head {
@@ -106,17 +135,25 @@ h2 {
   gap: 4mm;
 }
 
-h3 { font-size: 11pt; margin: 0; }
+h3 {
+  font-size: 11pt;
+  margin: 0;
+}
 
-.period, .company {
+.period,
+.company {
   font-family: var(--mono);
   font-size: 8pt;
   color: var(--muted);
   white-space: nowrap;
 }
 
-.company { margin: 0 0 1mm; }
-.text { margin: 0 0 1.2mm; }
+.company {
+  margin: 0 0 1mm;
+}
+.text {
+  margin: 0 0 1.2mm;
+}
 
 .tags {
   display: flex;
@@ -128,7 +165,7 @@ h3 { font-size: 11pt; margin: 0; }
     font-family: var(--mono);
     font-size: 7pt;
     color: var(--muted);
-    padding: .3mm 2mm;
+    padding: 0.3mm 2mm;
     border: 1px solid var(--line);
     border-radius: 99px;
   }
@@ -138,7 +175,9 @@ h3 { font-size: 11pt; margin: 0; }
 
 .group {
   break-inside: avoid;
-  & + .group { margin-top: 2.5mm; }
+  & + .group {
+    margin-top: 2.5mm;
+  }
 
   h4 {
     font-family: var(--mono);
@@ -148,7 +187,10 @@ h3 { font-size: 11pt; margin: 0; }
     margin: 0;
   }
 
-  p { margin: .5mm 0 0; font-weight: 500; }
+  p {
+    margin: 0.5mm 0 0;
+    font-weight: 500;
+  }
 }
 
 .list {
@@ -156,10 +198,22 @@ h3 { font-size: 11pt; margin: 0; }
   padding: 0;
   margin: 0;
 
-  li { break-inside: avoid; }
-  li + li { margin-top: 2mm; }
-  strong { display: block; font-weight: 500; line-height: 1.35; }
-  small { display: block; font-size: 8pt; color: var(--muted); }
+  li {
+    break-inside: avoid;
+  }
+  li + li {
+    margin-top: 2mm;
+  }
+  strong {
+    display: block;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  small {
+    display: block;
+    font-size: 8pt;
+    color: var(--muted);
+  }
 }
 
 .note {
@@ -185,14 +239,36 @@ h3 { font-size: 11pt; margin: 0; }
 }
 
 @media screen and (max-width: 840px) {
-  :host { padding: 0; }
-  .sheet { width: auto; min-height: 0; padding: 24px 16px; box-shadow: none; }
-  .grid { grid-template-columns: 1fr; }
-  .print { display: none; }
+  :host {
+    padding: 0;
+  }
+  .sheet {
+    width: auto;
+    min-height: 0;
+    padding: 24px 16px;
+    box-shadow: none;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .print {
+    display: none;
+  }
 }
 
 @media print {
-  :host { padding: 0; background: none; min-height: 0; }
-  .sheet { width: auto; min-height: 0; padding: 0 14mm; box-shadow: none; }
-  .print { display: none; }
+  :host {
+    padding: 0;
+    background: none;
+    min-height: 0;
+  }
+  .sheet {
+    width: auto;
+    min-height: 0;
+    padding: 0 14mm;
+    box-shadow: none;
+  }
+  .print {
+    display: none;
+  }
 }
