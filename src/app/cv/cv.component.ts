@@ -28,7 +28,6 @@ export class CvComponent {
   links = [
     { label: 'linkedin', url: this.p.linkedin },
     { label: 'github', url: this.p.github },
-    { label: 'credly', url: this.p.credly },
   ].filter(l => !!l.url);
 
   // "https://www.github.com/foo/" -> "github.com/foo"
