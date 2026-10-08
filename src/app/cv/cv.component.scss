@@ -21,6 +21,10 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, .12);
   font-size: 8.9pt;
   line-height: 1.38;
+
+  // colonna flessibile: la nota GDPR va in fondo al foglio
+  display: flex;
+  flex-direction: column;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -163,7 +167,8 @@ h3 { font-size: 11pt; margin: 0; }
 }
 
 .note {
-  margin: 3mm 0 0;
+  margin: auto 0 0;
+  padding-top: 4mm;
   font-size: 7pt;
   color: var(--muted);
 }
@@ -193,6 +198,6 @@ h3 { font-size: 11pt; margin: 0; }
 
 @media print {
   :host { padding: 0; background: none; min-height: 0; }
-  .sheet { width: auto; min-height: 0; padding: 0 14mm; box-shadow: none; }
+  .sheet { width: auto; min-height: 273mm; padding: 0 14mm; box-shadow: none; }
   .print { display: none; }
 }
