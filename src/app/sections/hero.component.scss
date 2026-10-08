@@ -1,0 +1,72 @@
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 96px;
+  padding-bottom: 64px;
+}
+
+h1 {
+  font-size: clamp(48px, 10vw, 112px);
+  line-height: .95;
+  letter-spacing: -.04em;
+  margin: 0;
+  font-weight: 700;
+}
+
+.dot { color: var(--accent); }
+
+.role {
+  font-family: var(--mono);
+  font-size: 15px;
+  margin: 24px 0 0;
+  color: var(--muted);
+}
+
+.intro {
+  max-width: 560px;
+  font-size: 20px;
+  margin: 16px 0 40px;
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.btn {
+  font-family: var(--mono);
+  font-size: 14px;
+  text-decoration: none;
+  padding: 12px 20px;
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  transition: background .15s, color .15s;
+
+  &:hover { background: var(--ink); color: var(--bg); }
+
+  &.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    &:hover { filter: brightness(1.08); }
+  }
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  margin: 80px 0 0;
+
+  dt {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  dd { margin: 4px 0 0; font-weight: 500; }
+}
+
+@media (max-width: 640px) {
+  .intro { font-size: 18px; }
+  .facts { gap: 24px; margin-top: 56px; }
+}
