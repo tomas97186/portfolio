@@ -252,8 +252,12 @@ h3 {
   .grid {
     grid-template-columns: 1fr;
   }
+  // su mobile non flottante, per non coprire il testo; la stampa resta A4 (vedi @media print)
   .print {
-    display: none;
+    position: static;
+    display: block;
+    width: 100%;
+    border-radius: 0;
   }
 }
 
