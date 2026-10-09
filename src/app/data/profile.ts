@@ -21,7 +21,7 @@ export const PROFILE = {
   email: "tommaso.cirillo98@gmail.com",
   linkedin: "https://it.linkedin.com/in/tommaso-cirillo-b496b91b7",
   github: "https://github.com/tomas97186",
-  credly: "https://www.credly.com/users/tommaso-cirillo",
+  credly: "",// "https://www.credly.com/users/tommaso-cirillo",
   intro:
     "I build web applications end to end, from the database schema to the last pixel of the UI, and I design and develop microservice architectures, from service boundaries to deployment.\n\r" +
     "Nearly five years across Java/Angular, Salesforce and AWS, now leading a full stack team.",
