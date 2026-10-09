@@ -19,12 +19,13 @@ export const PROFILE = {
   role: "Full Stack Developer",
   location: "Salerno, Italy",
   email: "tommaso.cirillo98@gmail.com",
-  linkedin: "https://it.linkedin.com/in/tommaso-cirillo-b496b91b7",
-  github: "https://github.com/tomas97186",
+  linkedin: "",// "https://it.linkedin.com/in/tommaso-cirillo-b496b91b7",
+  website: "https://tommaso.cirillo.work",
+  github: "", //"https://github.com/tomas97186",
   credly: "",// "https://www.credly.com/users/tommaso-cirillo",
   intro:
-    "I build web applications end to end, from the database schema to the last pixel of the UI, and I design and develop microservice architectures, from service boundaries to deployment.\n\r" +
-    "Nearly five years across Java/Angular, Salesforce and AWS, now leading a full stack team.",
+    "I build web applications end to end, from microservice architecture to UI.\n" +
+    "5+ years across Java/Angular, Salesforce and AWS, now leading a full stack team.",
 };
 
 export const ABOUT = [
@@ -95,10 +96,13 @@ export const JOBS: Job[] = [
 export const SKILLS: { group: string; items: string[] }[] = [
   {
     group: "Frontend",
-    items: ["Angular", "JavaScript", "HTML / CSS", "Figma"],
+    items: ["Angular", "TypeScript", "JavaScript", "HTML / CSS", "Figma"],
   },
-  { group: "Backend", items: ["Java", "Spring", "Python", "C", "SQL"] },
-  { group: "Cloud", items: ["OpenShift", "AWS"] },
+  {
+    group: "Backend",
+    items: ["Java", "Spring", "Microservices", "REST API", "Python", "C", "SQL"],
+  },
+  { group: "Cloud", items: ["OpenShift", "Docker / Kubernetes", "AWS"] },
   {
     group: "Practices",
     items: [

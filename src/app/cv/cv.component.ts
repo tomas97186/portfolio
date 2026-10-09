@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CERTS, CV_NOTE, EDUCATION, JOBS, LANGUAGES, PROFILE, SKILLS } from '../data/profile';
 import { NgStyle } from '@angular/common';
 
@@ -24,11 +24,13 @@ export class CvComponent {
   education = EDUCATION;
   languages = LANGUAGES;
   note = CV_NOTE;
+  showNote = signal(true);
 
   priv: PrivateInfo = (window as any).__CV_PRIVATE__ ?? {};
 
   links = [
     { label: 'linkedin', url: this.p.linkedin },
+    { label: 'website', url: this.p.website },
     { label: 'github', url: this.p.github },
     { label: 'credly', url: this.p.credly },
   ].filter(l => !!l.url);

@@ -1,4 +1,12 @@
-<button class="print" (click)="print()">print / save pdf</button>
+<div class="toolbar">
+  @if (note) {
+    <label>
+      <input type="checkbox" [checked]="showNote()" (change)="showNote.set(!showNote())" />
+      include GDPR note
+    </label>
+  }
+  <button class="print" (click)="print()">print / save pdf</button>
+</div>
 
 <article class="sheet">
   <header>
@@ -7,11 +15,11 @@
 
     <ul class="contacts">
       <li style="width: 100%">{{ p.location }}</li>
-      <li [style.width]="priv.phone ?  null : '100%'">
+      <li>
         <a [href]="'mailto:' + p.email">{{ p.email }}</a>
       </li>
       @if (priv.phone) {
-        <li style="width: 100%">{{ priv.phone }}</li>
+        <li>{{ priv.phone }}</li>
       }
       @if (priv.website) {
         <li>
@@ -103,7 +111,7 @@
     </aside>
   </div>
 
-  @if (note) {
+  @if (note && showNote()) {
     <p class="note">{{ note }}</p>
   }
 </article>
