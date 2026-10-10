@@ -1,5 +1,7 @@
 // Genera il PDF del CV dalla build di produzione.
-// Uso: npm run cv   (fa prima ng build, poi lancia questo script)
+// Uso: npm run cv            (fa prima ng build, poi lancia questo script)
+//      npm run cv -- it      CV in italiano
+//      npm run cv -- en out.pdf
 //
 // Telefono e sito personale non sono nel repo: se esiste cv.private.json nella
 // root del progetto (vedi cv.private.example.json) vengono aggiunti al PDF.
@@ -10,7 +12,8 @@ import { extname, join } from 'node:path';
 import puppeteer from 'puppeteer';
 
 const DIST = 'dist/portfolio/browser';
-const OUT = process.argv[2] ?? 'Tommaso-Cirillo-CV.pdf';
+const LANG = process.argv[2] ?? 'en';
+const OUT = process.argv[3] ?? (LANG === 'en' ? 'Tommaso-Cirillo-CV.pdf' : `Tommaso-Cirillo-${LANG.toUpperCase()}-CV.pdf`);
 
 const types = {
   '.html': 'text/html',
@@ -44,7 +47,7 @@ const browser = await puppeteer.launch();
 try {
   const page = await browser.newPage();
   await page.evaluateOnNewDocument(data => { window.__CV_PRIVATE__ = data; }, priv);
-  await page.goto(`http://localhost:${port}/cv`, { waitUntil: 'networkidle0' });
+  await page.goto(`http://localhost:${port}/cv?lang=${LANG}`, { waitUntil: 'networkidle0' });
   await page.evaluate(() => document.fonts.ready);
 
   await page.pdf({

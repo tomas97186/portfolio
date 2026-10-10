@@ -1,26 +1,26 @@
 <div class="hero wrap" id="top">
-  <p class="label">// hello, I'm</p>
+  <p class="label">{{ ui.hero.hello | t }}</p>
 
   <h1>
     {{ p.name }}<span class="dot">.</span>
   </h1>
 
   <p class="role">{{ p.role }}</p>
-  <p class="intro">{{ p.intro }}</p>
+  <p class="intro">{{ p.intro | t }}</p>
 
   <div class="actions">
-    <a href="#contact" class="btn primary">Get in touch</a>
-    <a href="#experience" class="btn">See my work →</a>
+    <a href="#contact" class="btn primary">{{ ui.hero.contact | t }}</a>
+    <a href="#experience" class="btn">{{ ui.hero.work | t }}</a>
   </div>
 
   <dl class="facts">
     <div>
-      <dt>based in</dt>
-      <dd>{{ p.location }}</dd>
+      <dt>{{ ui.hero.basedIn | t }}</dt>
+      <dd>{{ p.location | t }}</dd>
     </div>
     <div>
-      <dt>experience</dt>
-      <dd>{{ years }}+ years</dd>
+      <dt>{{ ui.hero.experience | t }}</dt>
+      <dd>{{ years }}+ {{ ui.hero.years | t }}</dd>
     </div>
     <div>
       <dt>stack</dt>

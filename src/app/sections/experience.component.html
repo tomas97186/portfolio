@@ -1,24 +1,24 @@
 <section id="experience">
   <div class="wrap">
-    <p class="label">02 / experience</p>
-    <h2>Where I've been working.</h2>
+    <p class="label">02 / {{ ui.section.experience | t }}</p>
+    <h2>{{ ui.experience.title | t }}</h2>
 
     <ol class="jobs">
-      @for (job of jobs; track job.role; let i = $index) {
+      @for (job of jobs; track job.from; let i = $index) {
         <li appReveal [class.open]="opened() === i">
           <button class="head" (click)="toggle(i)" [attr.aria-expanded]="opened() === i">
-            <span class="period">{{ job.from }} — {{ job.to }}</span>
-            <span class="role">{{ job.role }}</span>
+            <span class="period">{{ job.from | month }} — {{ job.to | month }}</span>
+            <span class="role">{{ job.role | t }}</span>
             <span class="company">{{ job.company }}</span>
             <span class="icon">+</span>
           </button>
 
           @if (opened() === i) {
             <div class="body">
-              <p>{{ job.text }}</p>
+              <p>{{ job.text | t }}</p>
               <div class="tags">
-                @for (t of job.tags; track t) {
-                  <span class="tag">{{ t }}</span>
+                @for (tag of job.tags | t; track tag) {
+                  <span class="tag">{{ tag }}</span>
                 }
               </div>
             </div>

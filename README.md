@@ -17,6 +17,7 @@ for A4.
 
 ```bash
 npm run cv       # builds the site and writes Tommaso-Cirillo-CV.pdf
+npm run cv -- it # Italian version: Tommaso-Cirillo-IT-CV.pdf
 ```
 
 The script uses Puppeteer to open `/cv` from the production build and save it as a PDF.

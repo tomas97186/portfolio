@@ -1,24 +1,32 @@
 import { AfterViewInit, Component, HostListener, OnDestroy, signal } from '@angular/core';
+import { LangSwitchComponent } from '../i18n/lang-switch.component';
+import { TPipe } from '../i18n/t.pipe';
+import { UI } from '../i18n/ui';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
+  imports: [LangSwitchComponent, TPipe],
   template: `
     <header [class.scrolled]="scrolled()">
       <div class="wrap bar">
         <a href="#top" class="logo">tc<span>.</span></a>
 
-        <button class="toggle" (click)="open.set(!open())" [attr.aria-expanded]="open()" aria-label="Menu">
-          <span></span><span></span>
-        </button>
+        <div class="right">
+          <nav [class.open]="open()">
+            @for (id of links; track id) {
+              <a [href]="'#' + id" [class.active]="active() === id" (click)="open.set(false)">
+                {{ ui.section[id] | t }}
+              </a>
+            }
+          </nav>
 
-        <nav [class.open]="open()">
-          @for (link of links; track link.id) {
-            <a [href]="'#' + link.id" [class.active]="active() === link.id" (click)="open.set(false)">
-              {{ link.label }}
-            </a>
-          }
-        </nav>
+          <app-lang-switch />
+
+          <button class="toggle" (click)="open.set(!open())" [attr.aria-expanded]="open()" aria-label="Menu">
+            <span></span><span></span>
+          </button>
+        </div>
       </div>
     </header>
   `,
@@ -39,6 +47,8 @@ import { AfterViewInit, Component, HostListener, OnDestroy, signal } from '@angu
     .logo { font-family: var(--mono); font-weight: 500; font-size: 20px; text-decoration: none; }
     .logo span { color: var(--accent); }
 
+    .right { display: flex; align-items: center; gap: 28px; }
+    app-lang-switch { color: var(--muted); }
     nav { display: flex; gap: 28px; }
     nav a {
       font-family: var(--mono);
@@ -54,6 +64,7 @@ import { AfterViewInit, Component, HostListener, OnDestroy, signal } from '@angu
     .toggle span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 5px 0; }
 
     @media (max-width: 720px) {
+      .right { gap: 8px; }
       .toggle { display: block; }
       nav {
         display: none;
@@ -70,13 +81,8 @@ import { AfterViewInit, Component, HostListener, OnDestroy, signal } from '@angu
   `,
 })
 export class NavComponent implements AfterViewInit, OnDestroy {
-  links = [
-    { id: 'about', label: 'about' },
-    { id: 'experience', label: 'experience' },
-    { id: 'skills', label: 'skills' },
-    { id: 'education', label: 'education' },
-    { id: 'contact', label: 'contact' },
-  ];
+  ui = UI;
+  links = Object.keys(UI.section) as (keyof typeof UI.section)[];
 
   scrolled = signal(false);
   open = signal(false);
@@ -99,8 +105,8 @@ export class NavComponent implements AfterViewInit, OnDestroy {
       { rootMargin: '-45% 0px -50% 0px' }
     );
 
-    this.links.forEach(l => {
-      const el = document.getElementById(l.id);
+    this.links.forEach(id => {
+      const el = document.getElementById(id);
       if (el) this.observer!.observe(el);
     });
   }

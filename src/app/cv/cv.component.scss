@@ -235,7 +235,8 @@ h3 {
   font-family: var(--mono);
   font-size: 13px;
 
-  label {
+  label,
+  .lang {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -244,6 +245,11 @@ h3 {
     background: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     cursor: pointer;
+  }
+  // i pulsanti del selettore hanno già il loro padding
+  .lang {
+    gap: 0;
+    padding: 4px 6px;
   }
   input {
     accent-color: var(--accent);
@@ -281,7 +287,8 @@ h3 {
     align-items: stretch;
     gap: 0;
 
-    label {
+    label,
+    .lang {
       justify-content: center;
       border-radius: 0;
       box-shadow: none;

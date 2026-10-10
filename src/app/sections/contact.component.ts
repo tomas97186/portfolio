@@ -1,18 +1,21 @@
 import { Component, signal } from '@angular/core';
 import { PROFILE } from '../data/profile';
+import { TPipe } from '../i18n/t.pipe';
+import { UI } from '../i18n/ui';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
+  imports: [TPipe],
   template: `
     <section id="contact">
       <div class="wrap">
-        <p class="label">05 / contact</p>
-        <h2 class="big">Let's build<br>something together.</h2>
+        <p class="label">05 / {{ ui.section.contact | t }}</p>
+        <h2 class="big" [innerHTML]="ui.contact.title | t"></h2>
 
         <div class="mail">
           <a [href]="'mailto:' + p.email">{{ p.email }}</a>
-          <button (click)="copy()">{{ copied() ? 'copied!' : 'copy' }}</button>
+          <button (click)="copy()">{{ (copied() ? ui.contact.copied : ui.contact.copy) | t }}</button>
         </div>
 
         <ul class="links">
@@ -31,7 +34,7 @@ import { PROFILE } from '../data/profile';
 
     <footer class="wrap">
       <span>© {{ year }} {{ p.name }}</span>
-      <span>built with Angular</span>
+      <span>{{ ui.contact.builtWith | t }}</span>
     </footer>
   `,
   styles: `
@@ -73,6 +76,7 @@ import { PROFILE } from '../data/profile';
 })
 export class ContactComponent {
   p = PROFILE;
+  ui = UI;
   year = new Date().getFullYear();
   copied = signal(false);
 

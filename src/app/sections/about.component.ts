@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
 import { ABOUT } from '../data/profile';
 import { RevealDirective } from '../shared/reveal.directive';
+import { TPipe } from '../i18n/t.pipe';
+import { UI } from '../i18n/ui';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [RevealDirective],
+  imports: [RevealDirective, TPipe],
   template: `
     <section id="about">
       <div class="wrap grid">
         <div>
-          <p class="label">01 / about</p>
-          <h2>From owning integrations<br>to leading a team.</h2>
+          <p class="label">01 / {{ ui.section.about | t }}</p>
+          <h2 [innerHTML]="ui.about.title | t"></h2>
         </div>
         <div class="text" appReveal>
           @for (par of paragraphs; track $index) {
-            <p>{{ par }}</p>
+            <p>{{ par | t }}</p>
           }
         </div>
       </div>
@@ -32,4 +34,5 @@ import { RevealDirective } from '../shared/reveal.directive';
 })
 export class AboutComponent {
   paragraphs = ABOUT;
+  ui = UI;
 }

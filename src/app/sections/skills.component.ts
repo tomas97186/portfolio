@@ -1,23 +1,25 @@
 import { Component } from '@angular/core';
 import { CERTS, SKILLS } from '../data/profile';
 import { RevealDirective } from '../shared/reveal.directive';
+import { TPipe } from '../i18n/t.pipe';
+import { UI } from '../i18n/ui';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [RevealDirective],
+  imports: [RevealDirective, TPipe],
   template: `
     <section id="skills">
       <div class="wrap">
-        <p class="label">03 / skills</p>
-        <h2>What I work with.</h2>
+        <p class="label">03 / {{ ui.section.skills | t }}</p>
+        <h2>{{ ui.skills.title | t }}</h2>
 
         <div class="groups">
-          @for (g of skills; track g.group) {
+          @for (g of skills; track $index) {
             <div class="group" appReveal>
-              <h3>{{ g.group }}</h3>
+              <h3>{{ g.group | t }}</h3>
               <ul>
-                @for (s of g.items; track s) {
+                @for (s of g.items | t; track s) {
                   <li>{{ s }}</li>
                 }
               </ul>
@@ -25,7 +27,7 @@ import { RevealDirective } from '../shared/reveal.directive';
           }
         </div>
 
-        <h3 class="sub">Certifications</h3>
+        <h3 class="sub">{{ ui.skills.certs | t }}</h3>
         <ul class="certs">
           @for (c of certs; track c.name) {
             <li appReveal>
@@ -82,4 +84,5 @@ import { RevealDirective } from '../shared/reveal.directive';
 export class SkillsComponent {
   skills = SKILLS;
   certs = CERTS;
+  ui = UI;
 }

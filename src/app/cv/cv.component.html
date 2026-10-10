@@ -1,11 +1,12 @@
 <div class="toolbar">
-  @if (note) {
+  <app-lang-switch class="lang" />
+  @if (note | t) {
     <label>
       <input type="checkbox" [checked]="showNote()" (change)="showNote.set(!showNote())" />
-      include GDPR note
+      {{ ui.cv.note | t }}
     </label>
   }
-  <button class="print" (click)="print()">print / save pdf</button>
+  <button class="print" (click)="print()">{{ ui.cv.print | t }}</button>
 </div>
 
 <article class="sheet">
@@ -14,7 +15,7 @@
     <p class="role">{{ p.role }}</p>
 
     <ul class="contacts">
-      <li style="width: 100%">{{ p.location }}</li>
+      <li style="width: 100%">{{ p.location | t }}</li>
       <li>
         <a [href]="'mailto:' + p.email">{{ p.email }}</a>
       </li>
@@ -37,23 +38,23 @@
   <div class="grid">
     <main>
       <section>
-        <h2><span>01</span> profile</h2>
-        <p class="intro">{{ p.intro }}</p>
+        <h2><span>01</span> {{ ui.cv.profile | t }}</h2>
+        <p class="intro">{{ p.intro | t }}</p>
       </section>
 
       <section>
-        <h2><span>02</span> experience</h2>
-        @for (job of jobs; track job.role) {
+        <h2><span>02</span> {{ ui.section.experience | t }}</h2>
+        @for (job of jobs; track job.from) {
           <div class="job">
             <div class="job-head">
-              <h3>{{ job.role }}</h3>
-              <span class="period">{{ job.from }} — {{ job.to }}</span>
+              <h3>{{ job.role | t }}</h3>
+              <span class="period">{{ job.from | month }} — {{ job.to | month }}</span>
             </div>
-            <p class="company">{{ job.company }} · {{ job.place }}</p>
-            <p class="text">{{ job.text }}</p>
+            <p class="company">{{ job.company }} · {{ job.place | t }}</p>
+            <p class="text">{{ job.text | t }}</p>
             <p class="tags">
-              @for (t of job.tags; track t) {
-                <span>{{ t }}</span>
+              @for (tag of job.tags | t; track tag) {
+                <span>{{ tag }}</span>
               }
             </p>
           </div>
@@ -63,17 +64,17 @@
 
     <aside>
       <section>
-        <h2><span>03</span> skills</h2>
-        @for (g of skills; track g.group) {
+        <h2><span>03</span> {{ ui.section.skills | t }}</h2>
+        @for (g of skills; track $index) {
           <div class="group">
-            <h4>{{ g.group }}</h4>
-            <p>{{ g.items.join(" · ") }}</p>
+            <h4>{{ g.group | t }}</h4>
+            <p>{{ (g.items | t).join(" · ") }}</p>
           </div>
         }
       </section>
 
       <section>
-        <h2><span>04</span> certifications</h2>
+        <h2><span>04</span> {{ ui.cv.certs | t }}</h2>
         <ul class="list">
           @for (c of certs; track c.name) {
             <li>
@@ -85,25 +86,25 @@
       </section>
 
       <section>
-        <h2><span>05</span> education</h2>
+        <h2><span>05</span> {{ ui.section.education | t }}</h2>
         <ul class="list">
-          @for (e of education; track e.title) {
+          @for (e of education; track e.years) {
             <li>
-              <strong>{{ e.title }}</strong>
-              <small>{{ e.school }} · {{ e.years }}</small>
-              <small>{{ e.note }}</small>
+              <strong>{{ e.title | t }}</strong>
+              <small>{{ e.school | t }} · {{ e.years }}</small>
+              <small>{{ e.note | t }}</small>
             </li>
           }
         </ul>
       </section>
 
       <section>
-        <h2><span>06</span> languages</h2>
+        <h2><span>06</span> {{ ui.cv.languages | t }}</h2>
         <ul class="list">
-          @for (l of languages; track l.name) {
+          @for (l of languages; track $index) {
             <li>
-              <strong>{{ l.name }}</strong>
-              <small>{{ l.level }}</small>
+              <strong>{{ l.name | t }}</strong>
+              <small>{{ l.level | t }}</small>
             </li>
           }
         </ul>
@@ -111,7 +112,7 @@
     </aside>
   </div>
 
-  @if (note && showNote()) {
-    <p class="note">{{ note }}</p>
+  @if ((note | t) && showNote()) {
+    <p class="note">{{ note | t }}</p>
   }
 </article>

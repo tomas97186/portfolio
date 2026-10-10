@@ -1,6 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { CERTS, CV_NOTE, EDUCATION, JOBS, LANGUAGES, PROFILE, SKILLS } from '../data/profile';
 import { NgStyle } from '@angular/common';
+import { LangSwitchComponent } from '../i18n/lang-switch.component';
+import { MonthPipe, TPipe } from '../i18n/t.pipe';
+import { UI } from '../i18n/ui';
 
 // Dati che non devono finire sul sito pubblico (telefono, ecc.).
 // Li inietta scripts/cv-pdf.mjs leggendo cv.private.json, che non è versionato.
@@ -14,7 +17,7 @@ interface PrivateInfo {
   standalone: true,
   templateUrl: './cv.component.html',
   styleUrl: './cv.component.scss',
-  imports: [NgStyle],
+  imports: [NgStyle, LangSwitchComponent, TPipe, MonthPipe],
 })
 export class CvComponent {
   p = PROFILE;
@@ -24,6 +27,7 @@ export class CvComponent {
   education = EDUCATION;
   languages = LANGUAGES;
   note = CV_NOTE;
+  ui = UI;
   showNote = signal(true);
 
   priv: PrivateInfo = (window as any).__CV_PRIVATE__ ?? {};

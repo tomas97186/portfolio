@@ -1,33 +1,35 @@
 import { Component } from '@angular/core';
 import { EDUCATION, LANGUAGES } from '../data/profile';
 import { RevealDirective } from '../shared/reveal.directive';
+import { TPipe } from '../i18n/t.pipe';
+import { UI } from '../i18n/ui';
 
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [RevealDirective],
+  imports: [RevealDirective, TPipe],
   template: `
     <section id="education">
       <div class="wrap">
-        <p class="label">04 / education</p>
-        <h2>Background.</h2>
+        <p class="label">04 / {{ ui.section.education | t }}</p>
+        <h2>{{ ui.education.title | t }}</h2>
 
         <div class="grid">
-          @for (e of education; track e.title) {
+          @for (e of education; track e.years) {
             <article appReveal>
               <span class="years">{{ e.years }}</span>
-              <h3>{{ e.title }}</h3>
-              <p class="school">{{ e.school }}</p>
-              <p class="note">{{ e.note }}</p>
+              <h3>{{ e.title | t }}</h3>
+              <p class="school">{{ e.school | t }}</p>
+              <p class="note">{{ e.note | t }}</p>
             </article>
           }
 
           <article appReveal>
-            <span class="years">languages</span>
-            @for (l of languages; track l.name) {
+            <span class="years">{{ ui.education.languages | t }}</span>
+            @for (l of languages; track $index) {
               <div class="lang">
-                <h3>{{ l.name }}</h3>
-                <p class="school">{{ l.level }}</p>
+                <h3>{{ l.name | t }}</h3>
+                <p class="school">{{ l.level | t }}</p>
               </div>
             }
           </article>
@@ -56,4 +58,5 @@ import { RevealDirective } from '../shared/reveal.directive';
 export class EducationComponent {
   education = EDUCATION;
   languages = LANGUAGES;
+  ui = UI;
 }
